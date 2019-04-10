@@ -6,7 +6,8 @@
   "module": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,8 @@
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "eslint": "^5.16.0",
-    "ghooks": "^2.0.4"
+    "ghooks": "^2.0.4",
+    "standard-version": "^5.0.2"
   },
   "config": {
     "ghooks": {
