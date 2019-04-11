@@ -1,9 +1,9 @@
-# Contributing to IssueTracker Demo
+# Contributing to JS Issue Tracker
 We want to make contributing to this project as easy and transparent as
 possible.
 
 ## Code of Conduct
-Help us keep IssueTracker Demo project open and inclusive. Please read and follow our [Code of Conduct](https://github.com/ehaberev/issue-tracker-demo/blob/master/CODE_OF_CONDUCT.md).
+Help us keep JS Issue Tracker project open and inclusive. Please read and follow our [Code of Conduct](https://github.com/ehaberev/issue-tracker-demo/blob/master/CODE_OF_CONDUCT.md).
 
 ## Our Development Process
 We use GitHub to sync code to and from our internal repository. We'll use GitHub
