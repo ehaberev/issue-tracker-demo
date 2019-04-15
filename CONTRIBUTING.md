@@ -20,17 +20,18 @@ We use [StandardIssueLabels](https://github.com/wagenet/StandardIssueLabels) for
 ## Issues
 We use GitHub issues to track public bugs and feature requests.
 
-Please use feature template or bug template when creating a new GitHub issue.
+Please use [feature template](https://github.com/ehaberev/issue-tracker-demo/blob/develop/.github/ISSUE_TEMPLATE/feature_request.md) or [bug template](https://github.com/ehaberev/issue-tracker-demo/blob/develop/.github/ISSUE_TEMPLATE/bug_report.md) when creating a new GitHub issue.
 
 ## Pull Requests
 We actively welcome your pull requests.
 
-1. Fork the repo and create your branch from `develop`.
-2. If you've added code that should be tested, add tests.
-3. If you've changed APIs, update the documentation.
-4. Ensure the test suite passes.
-5. Make sure your code lints.
-6. Issue that pull request.
+1. Verify that the corresponding issue is in the `To Do` state in associated project.
+2. Fork the repo and create your branch from `develop`.
+3. If you've added code that should be tested, add tests.
+4. If you've changed APIs, update the documentation.
+5. Ensure the test suite passes.
+6. Make sure your code lints.
+7. Create pull request with link to corresponding issue.
 
 ## Commit Message Format
 Your commit messages should meet the [Conventional Commmits specification](https://www.conventionalcommits.org).
