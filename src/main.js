@@ -42,6 +42,8 @@ function deleteIssue(id) {
   }
 
   localStorage.setItem('issues', JSON.stringify(issues));
+
+    fetchIssues();
 }
 
 function fetchIssues() {
