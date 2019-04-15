@@ -27,17 +27,19 @@ We actively welcome your pull requests.
 
 1. Verify that the corresponding issue is in the `To Do` state in associated project.
 2. Fork the repo and create your branch from `develop`.
-3. If you've added code that should be tested, add tests.
-4. If you've changed APIs, update the documentation.
-5. Ensure the test suite passes.
-6. Make sure your code lints.
-7. Create pull request with link to corresponding issue.
+3. Run `npm install`.
+4. If you've added code that should be tested, add tests.
+5. If you've changed APIs, update the documentation.
+6. Ensure the test suite passes.
+7. Make sure your code lints. See [Coding style](#coding-style) section.
+8. Create pull request with link to corresponding issue.
 
 ## Commit Message Format
 Your commit messages should meet the [Conventional Commmits specification](https://www.conventionalcommits.org).
 
 We use [commitlint](https://github.com/conventional-changelog/commitlint#what-is-commitlint) to check automatically format of your commit messages on each commit. 
 
+<a name="coding-style"></a>
 ## Coding Style  
 We use [Airbnb JavaScript style](https://github.com/airbnb/javascript/).
 
