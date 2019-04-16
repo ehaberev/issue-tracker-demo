@@ -1,6 +1,6 @@
 {
   "name": "issue-tracker-demo",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "This is the *JS Issue Tracker* sample application from the tutorial *Pure JavaScript - Building A Real-World Application From Scratch*. You can find the tutorial on http://CodingTheSmartWay.com.",
   "main": "index.js",
   "module": "main.js",
