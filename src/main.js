@@ -43,7 +43,7 @@ function deleteIssue(id) {
 
   localStorage.setItem('issues', JSON.stringify(issues));
 
-    fetchIssues();
+  fetchIssues();
 }
 
 function fetchIssues() {
