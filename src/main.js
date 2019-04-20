@@ -23,7 +23,7 @@ function saveIssue(e) {
   } else {
     issues = JSON.parse(localStorage.getItem('issues'));
     issues.push(issue);
-    localStorage.setItem('issues', JSON.stringify(issues));
+      localStorage.setItem('issues', JSON.stringify(issues));
   }
 
   document.getElementById('issueInputForm').reset();
