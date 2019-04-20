@@ -38,7 +38,15 @@ then
     cd "${TRAVIS_BRANCH}"
     ls -l
     cd ..
-    
+
+    # Prevent "empty" commit and build failure.
+    if [ -f ".gitkeep" ]
+    then
+      rm -rf .gitkeep
+    else
+      touch .gitkeep
+    fi
+
     # Configure git.
     git config user.name "ehaberev"
     git config user.email "ekhaberev@ics.perm.ru"
