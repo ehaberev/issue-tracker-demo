@@ -1,5 +1,5 @@
 /* global chance */
-import { saveIssueToLocalStorage, setIssueStatusClosed, deleteIssueFromLocalStorage } from 'package-temp';
+import { saveIssueToLocalStorage, setIssueStatusClosed, deleteIssueFromLocalStorage } from 'issue-tracker-core';
 
 window.addEventListener('load', fetchIssues);
 document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
@@ -30,6 +30,8 @@ function setStatusClosed(id) {
 // eslint-disable-next-line no-unused-vars
 function deleteIssue(id) {
   deleteIssueFromLocalStorage(id);
+
+  fetchIssues();
 }
 
 function fetchIssues() {
