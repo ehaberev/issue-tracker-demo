@@ -1,0 +1,9 @@
+{
+  "test_page": "test/index.html",
+  "src_files": ["test/test-bundle.js"],
+  "before_tests": "rollup --config rollup.config.test.js",
+  "on_exit": "rimraf test/test-bundle.js",
+  "disable_watching": true,
+  "launch_in_ci": ["Headless Chrome"],
+  "launch_in_dev": ["Chrome"]
+}
