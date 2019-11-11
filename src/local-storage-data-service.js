@@ -1,4 +1,9 @@
-export default class LocalStorageDataService {
+/** Data service for persisting somme entity using LocalStorage. */
+const LocalStorageDataService = class {
+  /**
+   * Creates data service for persisting some entity using LocalStorage.
+   * @param {string} entityName - Key for storing entity in LocalStorage.
+   */
   constructor(entityName) {
     this.entityName = entityName;
   }
@@ -62,4 +67,6 @@ export default class LocalStorageDataService {
       return false;
     }
   }
-}
+};
+
+export default LocalStorageDataService;

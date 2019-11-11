@@ -1,7 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import chance from 'chance';
 
-export default class IssuesTemplating {
+/** Visualization of working with issues. */
+const IssuesTemplating = class {
+  /**
+   * Creates class for visualization of working with issues.
+   * @param {Object} issuesDataStorage - Storage for an issues.
+   */
   constructor(issuesDataStorage) {
     this.issuesDataStorage = issuesDataStorage;
     document.getElementById('issueInputForm').addEventListener('submit', this.saveIssue.bind(this));
@@ -26,22 +31,22 @@ export default class IssuesTemplating {
 
     document.getElementById('issueInputForm').reset();
 
-    this.fetchIssues();
+    this.displayIssues();
 
     e.preventDefault();
   }
 
   setStatusClosed(id) {
     this.issuesDataStorage.changeIssueFieldById(id, 'status', 'Closed');
-    this.fetchIssues();
+    this.displayIssues();
   }
 
   deleteIssue(id) {
     this.issuesDataStorage.dateteIssueById(id);
-    this.fetchIssues();
+    this.displayIssues();
   }
 
-  fetchIssues() {
+  displayIssues() {
     const { issues } = this.issuesDataStorage;
     const issuesList = document.getElementById('issuesList');
 
@@ -108,4 +113,6 @@ export default class IssuesTemplating {
       issuesList.appendChild(div);
     });
   }
-}
+};
+
+export default IssuesTemplating;

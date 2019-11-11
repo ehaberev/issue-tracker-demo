@@ -7,4 +7,4 @@ const localStorageDataService = new LocalStorageDataService('issues');
 const issuesDataStorage = new IssuesDataStorage(localStorageDataService);
 const issuesTemplating = new IssuesTemplating(issuesDataStorage);
 
-window.onload = issuesTemplating.fetchIssues.bind(issuesTemplating);
+window.onload = issuesTemplating.displayIssues.bind(issuesTemplating);
