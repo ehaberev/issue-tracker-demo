@@ -1527,7 +1527,12 @@ function _wrapRegExp(re, groups) {
   return _wrapRegExp.apply(this, arguments);
 }
 
-class LocalStorageDataService {
+/** Data service for persisting somme entity using LocalStorage. */
+var LocalStorageDataService = class {
+  /**
+   * Creates data service for persisting some entity using LocalStorage.
+   * @param {string} entityName - Key for storing entity in LocalStorage.
+   */
   constructor(entityName) {
     this.entityName = entityName;
   }
@@ -1590,26 +1595,56 @@ class LocalStorageDataService {
   loadEntities() {
     try {
       var data = localStorage.getItem(this.entityName);
-      return data == null ? [] : JSON.parse(data);
+      var parsedData = JSON.parse(data);
+      return parsedData == null ? [] : parsedData;
     } catch (error) {
       return false;
     }
   }
 
-}
+};
 
-class IssuesDataStorage {
+/** Storage for an issues. */
+var IssuesDataStorage = class {
+  /**
+   * Create storage for an issues.
+   * @param {Object} dataService - Data service for persist an issues.
+   * @see LocalStorageDataService
+   */
   constructor(dataService) {
     this.dataService = dataService;
     this._issues = this.dataService.loadEntities();
   }
+  /**
+   * List of loaded issues.
+   * @type {Array<Object>}
+   * @readonly
+   */
+
 
   get issues() {
     return this._issues;
   }
+  /**
+   * Creates a new issue in storage and persist it.
+   * @returns {boolean} True if new issue was successfully persisted, false otherwise.
+   * @param {Object} issue - New issue to add.
+   * @throws {Error} Issue must be an instance of Object.
+   * @throws {Error} Issue must be specidied and have an `id` field.
+   * @throws {Error} Issue must have unique value of `id` field.
+   */
+
 
   createIssue(issue) {
     if (issue instanceof Object) {
+      if (!issue || issue.id === undefined) {
+        throw new Error("Issue must be non-empty and have an id");
+      }
+
+      if (this._issues.find(currentIssue => currentIssue.id === issue.id) !== undefined) {
+        throw new Error("Issue with id ".concat(issue.id, " us already exists"));
+      }
+
       this._issues.push(issue);
 
       return this.dataService.addEntity(issue);
@@ -1617,14 +1652,24 @@ class IssuesDataStorage {
 
     throw new Error('Issue must ba an object');
   }
+  /**
+   * Change value of specified field of issue with specified id and persist it.
+   * @returns {boolean} True if changing issue was found and successfully persisted, false otherwise.
+   * @param {*} id - Id of issue.
+   * @param {string} key - Name of field whose value has to be changed.
+   * @param {*} newValue - New value of specified field.
+   * @throws {Error} Id of issue must be specified
+   * @throws {Error} Key param must be specified
+   */
+
 
   changeIssueFieldById(id, key, newValue) {
     if (!id) {
-      throw new Error('Id should be passed th change issue');
+      throw new Error('Id should be passed to change issue');
     }
 
     if (!key) {
-      throw new Error('Key should be passed th change issue');
+      throw new Error('Key should be passed to change issue');
     }
 
     var issueToChange = this._issues.find(issue => {
@@ -1638,6 +1683,13 @@ class IssuesDataStorage {
 
     return false;
   }
+  /**
+   * Delete issue with specified id and persist it.
+   * @returns {boolean} True if deleting issue was found and successfully persisted, false otherwise.
+   * @param {*} id - Id of issue.
+   * @throws {Error} Id of issue must be specified
+   */
+
 
   dateteIssueById(id) {
     if (!id) {
@@ -1657,7 +1709,7 @@ class IssuesDataStorage {
     return false;
   }
 
-}
+};
 
 var global$1 = (typeof global !== "undefined" ? global :
             typeof self !== "undefined" ? self :
@@ -11437,7 +11489,13 @@ var chance_1 = createCommonjsModule(function (module, exports) {
 var chance_2 = chance_1.Chance;
 
 /* eslint-disable import/no-extraneous-dependencies */
-class IssuesTemplating {
+/** Visualization of working with issues. */
+
+var IssuesTemplating = class {
+  /**
+   * Creates class for visualization of working with issues.
+   * @param {Object} issuesDataStorage - Storage for an issues.
+   */
   constructor(issuesDataStorage) {
     this.issuesDataStorage = issuesDataStorage;
     document.getElementById('issueInputForm').addEventListener('submit', this.saveIssue.bind(this));
@@ -11458,21 +11516,21 @@ class IssuesTemplating {
     };
     this.issuesDataStorage.createIssue(issue);
     document.getElementById('issueInputForm').reset();
-    this.fetchIssues();
+    this.displayIssues();
     e.preventDefault();
   }
 
   setStatusClosed(id) {
     this.issuesDataStorage.changeIssueFieldById(id, 'status', 'Closed');
-    this.fetchIssues();
+    this.displayIssues();
   }
 
   deleteIssue(id) {
     this.issuesDataStorage.dateteIssueById(id);
-    this.fetchIssues();
+    this.displayIssues();
   }
 
-  fetchIssues() {
+  displayIssues() {
     var {
       issues
     } = this.issuesDataStorage;
@@ -11547,9 +11605,9 @@ class IssuesTemplating {
     });
   }
 
-}
+};
 
 var localStorageDataService = new LocalStorageDataService('issues');
 var issuesDataStorage = new IssuesDataStorage(localStorageDataService);
 var issuesTemplating = new IssuesTemplating(issuesDataStorage);
-window.onload = issuesTemplating.fetchIssues.bind(issuesTemplating);
+window.onload = issuesTemplating.displayIssues.bind(issuesTemplating);

@@ -62,7 +62,8 @@ const LocalStorageDataService = class {
   loadEntities() {
     try {
       const data = localStorage.getItem(this.entityName);
-      return data == null ? [] : JSON.parse(data);
+      const parsedData = JSON.parse(data);
+      return parsedData == null ? [] : parsedData;
     } catch (error) {
       return false;
     }

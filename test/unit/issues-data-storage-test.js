@@ -1,4 +1,3 @@
-/* global QUnit */
 // import LocalStorageDataService from '../../src/local-storage-data-service';
 import IssuesDataStorage from '../../src/issues-data-storage';
 import sinon from '../../node_modules/sinon/pkg/sinon-esm';
@@ -44,6 +43,10 @@ QUnit.test('Add issue (normal case)', assert => {
   //   loadEntities: sinon.stub().returns([]),
   // });
 
+  // const spy = sinon.spy(tempDataService, 'addEntity');
+  // const mock = sinon.mock(tempDataService);
+  // mock.expects('addEntity').once();
+
   const issuesDataStorage = new IssuesDataStorage(tempDataService);
   const issueToAdd = getIssueForTest();
 
@@ -56,6 +59,8 @@ QUnit.test('Add issue (normal case)', assert => {
   assert.equal(result, true, 'Issue has been added');
   assert.equal(addedIssues.length, 1, 'Count of added issues is correct');
   assert.deepEqual(addedIssues[0], issueToAdd, 'Added issue is found in storage');
+  // assert.equal(spy.called, true, 'addEntity was called');
+  // mock.verify();
 });
 
 QUnit.test('Add issue with duplicate id', assert => {
