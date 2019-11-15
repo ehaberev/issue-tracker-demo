@@ -32,7 +32,7 @@ const LocalStorageDataService = class {
 
   deleteEntity(entity) {
     if (!entity || !entity.id) {
-      throw new Error('Entity should have an id');
+      throw new Error('Entity should be set and have an id');
     }
     return this.dateteEntityById(entity.id);
   }
